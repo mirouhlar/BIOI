@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Reaction Diffusion Simulation</title>
+  <script type="text/javascript" src="scripts/simulationGS.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="scripts/p5.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/style2.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+  <div id="simulation">
+    <h1>Simulation of Reaction Diffusion system by Gray Scott model</h1>
+    <h2>Pattern Formation</h2>
+
+    <div id="container">
+      <div class="box" id="simulation-frame">
+      </div>
+    </div>
+
+    <div id="buttons">
+
+    	<h3>Choose from presets and control simulation: </h3>
+    	      <button class = "simb" id="startstopButton" type="button" onclick="startstop();" value="Start" style="background-color: brown;">Start</button>
+
+    	<select class = "simb" id="select_presets" onchange="change_type()">
+        <option value="default">Default</option>
+        <option value="Waves">Waves</option>
+        <option value="Chaos">Chaos</option>
+        <option value="Spots and Loops">Spots and Loops</option>
+        <option value="Moving Spots">Moving Spots</option>
+        <option value="Chaos and Holes">Chaos and Holes</option>
+        <option value="Mazes">Mazes</option>
+        <option value="Holes">Holes</option>
+        <option value="Pulsating Solitons">Pulsating Solitons</option>
+        <option value="Solitons">Solitons</option>
+      </select>
+      <button class = "simb" id="resetButton" type="button" onclick="reset();">Clear and reset</button>
+      <button class = "simb" id="btn_random" onclick="random_dot();">Random drop</button>
+      
+
+
+
+
+    </div>
+<br>
+    <div id="controls">
+    	<h3>Advanced simulation options: </h3>
+    	<span
+        id="feed-rate-value"> Feed rate = 0.014 </span><br>
+      <input class="slider" type="range" id="feed-rate" value="0.014" min="0.000" max="0.100" step="0.001" oninput="changef();">
+        <input type="number" id="feed-rate1" class="numberinput" value="0.014" min="0.000" max="0.100" step="0.001" oninput="changeff();">
+
+		<br>
+      <span
+        id="kill-rate-value"> Kill rate = 0.051 </span><br>
+      <input class="slider" type="range" id="kill-rate" value="0.051" min="0.000" max="0.080" step="0.001" oninput="changek();">
+              <input type="number" id="kill-rate1" class="numberinput" value="0.051" min="0.000" max="0.080" step="0.001" oninput="changekk();">
+<br>
+      <span
+        id="dU-value"> dU coefficient = 1.0 </span><br>
+      <input class="slider" type="range" id="dU" value="1.0" min="0.000" max="1.00" step="0.001" oninput="changedU();">
+              <input type="number" id="dU1" class="numberinput" value="1.0" min="0.000" max="1.00" step="0.001" oninput="changedUu();">
+<br>
+      <span
+        id="dV-value"> dV coefficient = 0.5 </span><br>
+      <input class="slider" type="range" id="dV" value="0.5" min="0.000" max="1.00" step="0.001" oninput="changedV();">
+              <input type="number" id="dV1" class="numberinput" value="0.5" min="0.000" max="1.00" step="0.001" oninput="changedVv();">
+<br>
+
+
+
+
+    </div>
+</body>
+
+</html>

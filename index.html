@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Reaction-Diffusion model</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@600&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Translate and analyze text with Azure Cognitive Services.">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Quicksand:wght@500&display=swap"
+    rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+
+
+
+
+</head>
+
+<body>
+  <section id="nav-bar">
+
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#"><img
+          src="https://kkui.fei.tuke.sk/wp-content/uploads/2019/07/logo_kkui-1024x356.png"
+          style="max-height: 40px;filter: grayscale(50%);filter: invert(100%);" alt="KKUI TUKE"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#banner">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="simulator.html">SIMULATOR</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#footer">AUTHORS</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+
+  <!-----------banner---------->
+
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="promo-title">Reaction-Diffusion by the Gray-Scott model</p>
+
+
+        </div>
+        <div class="col-md-6 text-center';">
+          <img src="images/hello1.png" class="img_fluid" style="max-width: 100%" HSPACE="5" VSPACE="10">
+        </div>
+      </div>
+    </div>
+    <div class="abstract">
+      <h2>Introduction</h2>
+      <br>
+      <p>
+        Reaction–diffusion systems are mathematical models which correspond to several physical phenomena. The most
+        common is the change in space and time of the concentration of one or more chemical substances: local chemical
+        reactions in which the substances are transformed into each other, and diffusion which causes the substances to
+        spread out over a surface in space.
+
+        Reaction–diffusion systems are naturally applied in chemistry. However, the system can also describe dynamical
+        processes of non-chemical nature. Examples are found in biology, geology and physics (neutron diffusion theory)
+        and ecology. Mathematically, reaction–diffusion systems take the form of semi-linear parabolic partial
+        differential equations in general:
+      </p>
+
+      <p> \[ \frac{\partial \mathbf{u}}{\partial t} = \mathbf{D} \nabla^2\mathbf{u}+\mathbf{R}(\mathbf{u})\]
+        where \(\mathbf{u = u}(\mathbf{r,t})\) is a vector of concentration variables, \( \mathbf{R}(\mathbf{u})\)
+        denotes a local reaction kinetics and \( \nabla^2 \) is a Laplace operator. \( \mathbf{D} \) denotes a diagonal
+        diffusion coefficient matrix.
+      </p>
+      <h2>First mentioned</h2>
+      <br>
+      <p>
+        "The Chemical Basis of Morphogenesis" is an article that the English mathematician Alan Turing wrote in 1952. It
+        describes how patterns in nature, such as stripes and spirals, can arise naturally from a homogeneous, uniform
+        state. The theory, which can be called a reaction–diffusion theory of morphogenesis, has become a basic model in
+        theoretical biology. Such patterns have come to be known as Turing patterns. For example, it has been postulated
+        that the protein VEGFC can form Turing patterns to govern the formation of lymphatic vessels in the zebrafish
+        embryo.
+
+      </p>
+      <br>
+      <h2>Alan Turing</h2><br>
+      <p>
+        Alan Turing, in full Alan Mathison Turing, (born June 23, 1912, London, England—died June 7, 1954, Wilmslow,
+        Cheshire), British mathematician and logician who made major contributions to mathematics, cryptanalysis, logic,
+        philosophy, and mathematical biology and also to the new areas later named computer science, cognitive science,
+        artificial intelligence, and artificial life. tu by trebalo dzabnut jeho fotku
+      </p>
+      <img src="images/alan.jpg" alt="Example" style="display: block; margin-right: auto; margin-left: auto" ;
+        float=left-right width=25% height=25%>
+
+
+
+      <h2>Proving the theory</h2>
+      <br>
+      <p>
+        For three decades, Turing’s theory on morphogenesis was largely ignored by biologists. But the combined arrival
+        of powerful computers and the dawn of modern molecular cell biology, as well as the work of two generations of
+        scientists who took Turing’s theory seriously from the 80s onwards, have contributed to proving it.
+
+        Jeremy Green, professor of developmental biology at King’s College London, and his team provided one of the
+        first non-theoretical proofs of Turing’s ideas in 2014, when they discovered that the ridges on the roof of a
+        mouse’s mouth acted like stripes or spots in morphogenesis. They identified the two chemicals needed to produce
+        this – and proved in mice that it works.
+
+        ‘It’s been possible, but only in very recent times, to really test Turing’s theory,’ Professor Green says.
+        ‘There are a relatively limited number of examples where people have done that in a rigorous way – skin being
+        one, my research into the palate being another, and left-right asymmetry in fish being the third. Turing was
+        right and we’ve now got the names [for the shape-formers].’ Broadly speaking, the morphogens in this case turned
+        out to be protein growth factors, of which there are six main ones. ‘Each one of those six can come in a bunch
+        of different flavours,’ says Green – so determining what the job of each morphogen is will be critical, as
+        scientists come to programme stem cells to do certain things in the body.
+
+        It might be counterintuitive to many of us, but it makes sense that a mathematician would look at patterns in
+        biology and try to formulate an equation for their existence. It’s only now that scientists are realising quite
+        how far ahead Turing’s thinking was.
+      </p><br>
+      <h2> Turing paterns in nature </h2>
+      <br>
+      <img src="images/nature.jpg" alt="Example" style="display: block; margin-right: auto; margin-left: auto" ;
+        float=left-right width=75% height=75%>
+      <p>
+
+        <img src="images/nature1.png" alt="Example" style="display: block; margin-right: auto; margin-left: auto" ;
+          float=left-right width=75% height=75%>
+      <p>
+        We can find many examples of Turing patterns. Tigers, fishes and many others.
+        <!-- Tu by som natrepal zopar fotiek aby to nebolo iba samy text.
+  </p> -->
+      <h2> Use in modern world </h2><br>
+      <p>
+        Aided by modern computers, scientists have shown that Turing’s equations can be used to mimic countless
+        two-dimensional patterns seen across the natural world
+      </p>
+
+      <u> <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3141687/pdf/1742-4682-8-24.pdf"
+          target="_blank">Fingerprints - article</a> </u> <br>
+      <p>Fingerprints represent a particular characteristic for each individual.
+        Characteristic patterns are also formed on the palms of the hands and soles of the
+        feet. Their origin and development is still unknown but it is believed to have a
+        strong genetic component, although it is not the only thing determining its
+        formation. Each fingerprint is a papillary drawing composed by papillae and rete
+        ridges (crests). This paper proposes a phenomenological model describing fingerprint
+        pattern formation using reaction diffusion equations with Turing space parameters.</p>
+
+
+      <img src="images/finger.png" alt="Example" style="display: block; margin-right: auto; margin-left: auto" ;
+        float=left-right width=35% height=35%>
+
+      <u> <a href="https://www.crm.umontreal.ca/~durand/Murray-Sc.Am.pdf" target="_blank">Coats of animals - article</a>
+      </u>
+      <p>Turing began with the assumption
+        that morphogens can react with one
+        another and diffuse through cells. He
+        then employed a mathematical model
+        to show that if morphogens react and
+        diffuse in an appropriate way, spatial
+        patterns of morphogen concentrations can arise from an initial
+        uniform distribution in an assemblage of cells. Turing's model has
+        spawned an entire class of models
+        that are now referred to as
+        reaction-diffusion models. These
+        models are applicable if the scale of
+        the pattern is large compared with the
+        diameter of an individual cell. The
+        models are applicable to the leopard's
+        coat, for instance, because the
+        number of cells in a leopard spot at
+        the time the pattern is laid down is
+        probably on the order of 100. </p>
+
+      <img src="images/coats.jfif" alt="Example" style="display: block; margin-right: auto; margin-left: auto" ;
+        float=left-right width=75% height=75%>
+
+
+
+
+
+
+
+
+
+
+      <br>
+      <h2>Gray-Scott model</h2>
+      <br>
+      <p>
+        The reaction-diffusion system described here involves two generic chemical species U and V, whose concentration
+        at a given point in space is referred to by variables u and v. As the term implies, they react with each other,
+        and they diffuse through the medium. Therefore the concentration of U and V at any given location changes with
+        time and can differ from that at other locations.
+
+        There are two reactions which occur at different rates throughout the space according to the relative
+        concentrations at each point:
+        \[ U + 2V \rightarrow 3V \]
+        \[ V \rightarrow P \]
+
+        P is an inert product. It is assumed for simplicity that the reverse reactions do not occur (this is a useful
+        simplification when a constant supply of reagents prevents the attainment of equilibrium). Because V appears on
+        both sides of the first reaction, it acts as a catalyst for its own production.
+
+        The overall behavior of the system is described by the following formula, two equations which describe three
+        sources of increase and decrease for each of the two chemicals:
+
+
+        \[ \frac{\partial u}{\partial t} = D_u \nabla^2u-uv^2+f(1-u)\]
+        \[ \frac{\partial v}{\partial t} = D_v \nabla^2v+uv^2-(f+k)v\]
+
+        u=[U], the concentration of U, and v=[V]. For the sake of simplicity we can consider Du, Dv, f and k to be
+        constant coefficients.
+        <br>
+        The first equation tells how quickly the quantity u increases. There are three terms. The first term, Du∇2u, is
+        the diffusion term. It specifies that u will increase in proportion to the Laplacian (a sort of multidimensional
+        second derivative giving the amount of local variation in the gradient) of U. When the quantity of U is higher
+        in neighboring areas, u will increase. ∇2u will be negative when the surrounding regions have lower
+        concentrations of U, and in such cases the diffusion term is negative and u decreases. If we made an equation
+        for u with only the first term, we would have ∂u/∂t = Du∇2u, which is a diffusion-only system equivalent to the
+        heat equation.
+        <br><br>
+        The second term is -uv2. This is the reaction rate. The first reaction shown above requires one U and two V;
+        such a reaction takes place at a rate proportional to the concentration of U times the square of the
+        concentration of V6. Also, it converts U into V: the increase in v is equal to the decrease in u (as shown by
+        the positive uv2 in the second equation). There is no constant on the reaction terms, but the relative strength
+        of the other terms can be adjusted through the constants Du, Dv, F and k, and the choice of the arbitrary time
+        unit implicit in ∂t.
+        <br><br>
+        The third term, F(1-u), is the replenishment term. Since the reaction uses up U and generates V, all of the
+        chemical U will eventually get used up unless there is a way to replenish it. The replenishment term says that u
+        will be increased at a rate proportional to the difference between its current level and 1. As a result, even if
+        the other two terms had no effect, 1 would be the maximum value for u. The constant F is the feed rate and
+        represents the rate of replenishment.
+        <br><br>
+        In the systems this equation is modeling, the area where the reaction occurs is physically adjacent to a large
+        supply of U and separated by something that limits its flow, such as a semi-permeable membrane; replenishment
+        takes place via diffusion across the membrane, at a rate proportional to the concentration difference Δ[U]
+        across the membrane. The value 1 represents the concentration of U in this supply area, and F corresponds to the
+        permeability of the membrane.
+        <br><br>
+        It is useful to note here that in biological systems, such as the skin of a developing embryo, this "supply"
+        could be from the bloodstream, or from cells in an adjacent layer of tissue that continuously generate the
+        needed chemical(s), with rates regulated by enzymes.
+        <br><br>
+        Comparing the two equations, the biggest difference is in the third term, where we have F(1-u) in one equation
+        and (F+k)v in the other. The third term in the v equation is the diminishment term. Without the diminishment
+        term, the concentration of V could increase without limit. In practice, V could be allowed to accumulate for a
+        long time without interfering with further production of more V, but it naturally diffuses out of the system
+        through the same (or a similar) process as that which introduces the new supply of U. The diminishment term is
+        proportional to the concentration of V that is currently present, and also to the sum of two constants F and k.
+        F, as above, represents the permeability of the membrane to U, and k represents the difference between this rate
+        and that for V.
+      </p>
+      <br>
+      <div>
+        <h2>Solving method</h2><br>
+        <p>We are going to obtain diffusion by Laplace function. Renew values according to the previous values, this
+          dynamical system shown by using forward Euler integrations of the finite-difference equations.</p>
+        <br>
+        Forward Euler method:
+        \[ \frac{\partial x}{\partial t} = f(x,t), \quad \quad x(t=0) = x_0 \]
+        \[ x_{t+1} = x_t + f_t \Delta t \]
+        <br>
+        Finite-difference equations of Gray Scott model:
+        <p>
+          \[u_{t+1} = u_t + (D_{u}\nabla^2{u_t} - u_t{v_t}^2 + f(1-u_t))\,\Delta t \]
+          \[v_{t+1} = v_t + (D_{v}\nabla^2{v_t} + u_t{v_t}^2 - (k+f)\,v_t)\,\Delta t \]
+        </p>
+        To obtain Laplace function we are using approximation by convolution with 3x3 mask.
+        <div><br>
+          <h2>Example</h2><br>
+          We assume that values used in this example are: \[D_A=1.0, \quad D_B = 0.5, \quad f = 0.055, \quad k = 0.062,
+          \quad \Delta t = 1 \]
+          Convolution mask is \begin{matrix}0.05 & 0.2 & 0.05 \\ 0.2 & -1 & 0.2 \\ 0.05 & 0.2 & 0.05 \end{matrix}
+          <br>
+          <img src="images/konv_marekova.png" alt="Example"
+            style="display: block; margin-right: auto; margin-left: auto" width="800" height="800">
+          <br>
+          <h2>Videos of topic</h2><br>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/alH3yc6tX98" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/LMzYrsfTiEw" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/PtPK_xx5Hks" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/oP97DQlXdn4?start=781"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/zp3P78YuZRg?start=781"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div id="simulatorpagebutton">
+      <h2> Click here to get to the Simulator page! </h2>
+      <button class="simb" onclick="location.href='simulator.html'">SIMULATOR PAGE BUTTON</button>
+    </div>
+  </section>
+
+  <!---------------APP-------------->
+  <!-- 
+<section id="app">
+  <div id ="appdiv">
+    <h1 class="title">SIMULATOR</h1>
+
+   </div>
+</section>
+ -->
+
+  <!---------------FOOTER-------------->
+
+  <section id="footer">
+    <div class="container">
+      <h1>AUTHORS</h1>
+      <div class="row">
+        <div class="col-xs-6 col-sm-3  footer-box">
+          <a href="mailto:miroslav.uhlar@student.tuke.sk"><i class="fa fa-envelope-o"></i>Miroslav Uhľar</a>
+          <p><i class="fa fa-map-marker"></i>Technical University</p>
+          <p><i class="fa fa-phone"></i>+421 904 522 625</p>
+        </div>
+        <div class="col-xs-6 col-sm-3  footer-box">
+          <a href="mailto:marek.kostka@student.tuke.sk"><i class="fa fa-envelope-o"></i>Marek Kostka</a>
+          <p><i class="fa fa-map-marker"></i>Technical University</p>
+          <p><i class="fa fa-phone"></i>+421 123 456 789</p>
+        </div>
+        <div class="col-xs-6 col-sm-3  footer-box">
+          <a href="mailto:jozef.kondas@student.tuke.sk"><i class="fa fa-envelope-o"></i>Jozef Kondáš</a>
+          <p><i class="fa fa-map-marker"></i>Technical University</p>
+          <p><i class="fa fa-phone"></i>+421 123 456 789</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
